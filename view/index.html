@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+{% block content %}
+  <div class="container my-3">
+    <h1 class="text-success fw-bolder text-center">QR Code Generator</h1>
+    <div class="container">
+      <div class="input-group mb-3">
+        <input  
+          id="generate-text" 
+          type="text" 
+          class="form-control mx-1" 
+          placeholder="Place Text Here..." 
+          aria-label="Link">
+        <button class="btn btn-success mx-1" type="button" id="generate-btn">Generate</button>
+      </div>
+      <div id="img-container" class="container text-center" data-imgreq="{{content}}">
+        <img id="qr-code" src="/qrcode.jpg" hidden>
+      </div>
+    </div>
+  </div>
+{% endblock %}
