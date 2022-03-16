@@ -1,9 +1,14 @@
 const qrCode = require("qrcode")
 const fs = require('fs')
+
+
+
 const generateQR = async (path,text) => {
   try {
     await qrCode.toFile(path,text,(err)=>{
-      console.log(err);
+     if(err){
+      console.error(err);
+     }
     });
   } catch (err) {
     console.error(err)
@@ -18,9 +23,12 @@ const qrGeneratorGET = (req,res) =>{
   return res.render("index.html",{content: json_data})
 }
 
+
+
+
 const qrGeneratorPOST = (req,res) =>{
   let path = "public/qrcode.jpg";
-  generateQR(path,req.body.url);
+  generateQR(path,req.body.text);
   let json_data = JSON.stringify({
     "isGenerated" : true  
   })

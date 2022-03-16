@@ -1,6 +1,9 @@
 
 var qrCodeImage = document.getElementById("qr-code")
 var container = document.getElementById("img-container")
+
+
+
 if(container.dataset.imgreq !== ''){
   let imgreq = JSON.parse(container.dataset.imgreq);
   console.log(imgreq);
@@ -18,7 +21,7 @@ generateBtn.addEventListener("click",function(){
     url: "/",
     type: "POST",
     dataType: 'json',
-    data: {"url" : generateText.value}
+    data: {"text" : generateText.value}
 });
   window.location.reload();
 });

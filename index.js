@@ -29,6 +29,7 @@ app.use(session({
   resave: false
 }));
 
+
 app.get('/',qrCode.qrGeneratorGET);
 app.post('/',qrCode.qrGeneratorPOST);
 
