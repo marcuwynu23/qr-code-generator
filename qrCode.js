@@ -2,43 +2,26 @@ const qrCode = require("qrcode")
 const fs = require('fs')
 
 
-
 const generateQR = async (path,text) => {
   try {
     await qrCode.toFile(path,text,(err)=>{
      if(err){
       console.error(err);
-     }
-    });
+    }
+  });
   } catch (err) {
     console.error(err)
   }
 }
 
-
-const qrGeneratorGET = (req,res) =>{
-  let json_data = JSON.stringify({
-  "isGenerated" : fs.existsSync("public/qrcode.jpg")  
-  })
-  return res.render("index.html",{content: json_data})
-}
-
-
-
-
-const qrGeneratorPOST = (req,res) =>{
-  let path = "public/qrcode.jpg";
-  generateQR(path,req.body.text);
-  let json_data = JSON.stringify({
-    "isGenerated" : true  
-  })
-  return res.render("index.html",{content: json_data})
-}
-
-
-
+const imgPath = "public/image/qrcode.jpg";
 module.exports = {
-  qrGeneratorGET : qrGeneratorGET,
-  qrGeneratorPOST : qrGeneratorPOST
-
+  qrGeneratorGET : (req,res) =>{
+    return res.render("index.html",{
+      isGenerated:fs.existsSync(imgPath)
+    })
+  },
+  qrGeneratorPOST : (req,res) =>{
+    generateQR(imgPath,req.body.text);
+  }
 };

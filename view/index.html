@@ -3,6 +3,7 @@
   <div class="container my-3">
     <h1 class="text-success fw-bolder text-center">QR Code Generator</h1>
     <div class="container">
+    {{ info }}
       <div class="input-group mb-3">
         <input  
           id="generate-text" 
@@ -12,8 +13,12 @@
           aria-label="Link">
         <button class="btn btn-success mx-1" type="button" id="generate-btn">Generate</button>
       </div>
-      <div id="img-container" class="container text-center" data-imgreq="{{content}}">
-        <img id="qr-code" src="/qrcode.jpg" hidden>
+      <div class="container text-center">
+        {% if isGenerated %}
+          <img id="qr-code" src="/image/qrcode.jpg">
+        {% else %}
+            <h2>Cannot Preview Image not Available</h2>
+        {% endif %}
       </div>
     </div>
   </div>
