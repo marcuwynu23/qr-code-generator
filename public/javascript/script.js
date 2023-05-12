@@ -1,15 +1,25 @@
-
-
 let generateText = document.getElementById("generate-text");
 let generateBtn = document.getElementById("generate-btn");
-generateBtn.addEventListener("click",function(){
-  $.ajax({
-    url: "/",
-    type: "POST",
-    dataType: 'json',
-    data: {"text" : generateText.value}
-});
-  window.location.reload();
-});
 
+async function sendData() {
+	console.log("hello.");
+	try {
+		let status = await fetch("/generate", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				data: generateText.value,
+			}),
+		});
+		console.log(status);
+	} catch (error) {
+		console.error(error);
+	}
+}
 
+generateBtn.addEventListener("click", async function () {
+	await sendData(generateText.value);
+	window.location.reload();
+});
