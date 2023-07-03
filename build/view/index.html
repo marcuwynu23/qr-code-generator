@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container my-3">
+  <h1 class="text-success fw-bolder text-center">QR Code Generator</h1>
+  <div class="container">
+    {{ info }}
+    <div class="input-group mb-3">
+      <input id="generate-text"
+        type="text"
+        class="form-control mx-1 bg-dark text-white"
+        placeholder="Place Text Here..."
+        aria-label="Link">
+      <button class="btn btn-success mx-1"
+        type="button"
+        id="generate-btn">Generate</button>
+    </div>
+    <div class="container text-center">
+      {% if isGenerated %}
+      <h2 class="text-white">Preview</h2>
+      <img id="qr-code"
+        class="border-round"
+        src="/image/qrcode.jpg">
+      {% else %}
+      <h2>Cannot Preview Image not Available</h2>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
