@@ -1,13 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;700&display=swap');
+
 * {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 2px;
+  font-size: 12px;
 }
 
 
+.text-success {
+  color: #890f96 !important;
+}
+
+.bg-success{
+  background-color: #890f96 !important;
+}
+
+.drop-shadow{
+  filter: drop-shadow(0px 0px 5px rgba(151, 151, 151, 0.2));
+}
+
 #qr-code {
-  width: 20cm;
-  height: 20cm;
-  border: 1px solid lightgrey;
+  width: 10cm;
+  height: 10cm;
+  border: 1px solid rgb(237, 237, 237);
 }
 
 textarea:focus,
@@ -23,13 +39,12 @@ input[type="number"]:focus,
 input[type="email"]:focus,
 input[type="url"]:focus,
 input[type="search"]:focus,
-
-
 input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus {
-  border-style: solid;
-  border-color: lightgrey;
-  box-shadow: none;
-  outline: 0 none;
+  border: 1px solid rgb(237, 237, 237) !important;
+}
+
+input {
+  border: 1px solid rgb(237, 237, 237) !important;
 }
